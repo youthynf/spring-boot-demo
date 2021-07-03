@@ -31,12 +31,10 @@ public class TestConfig implements InitializingBean, ApplicationContextAware{
     @Override
     public void afterPropertiesSet() throws Exception {
         Map<String, TestService> beanMap = applicationContext.getBeansOfType(TestService.class);
-        System.out.println(applicationContext);
         for(TestService serviceImpl : beanMap.values()) {
             // getName()返回包含包名，而getSimpleName()只返回类的名称
             queryServiceImplMap.put(serviceImpl.getClass().getSimpleName(), serviceImpl);
         }
-        System.out.println(queryServiceImplMap);
     }
 
     /**
